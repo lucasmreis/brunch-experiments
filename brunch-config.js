@@ -7,8 +7,10 @@ const brand        = process.env.BRAND         || 'acom'
 const env          = process.env.ENV           || 'development'
 const themeVersion = process.env.THEME_VERSION || '2.1.38'
 
-const theme        = `https://cdn.b2w/theme.${brand}.${themeVersion}.css`
-const localStyle   = `app.${brand}.css`
+const theme      = `https://cdn.b2w/theme.${brand}.${themeVersion}.css`
+const localStyle = `app.${brand}.css`
+
+const revision = 'some-revision-0.13.5'
 
 exports.config = {
   hot: true,
@@ -26,7 +28,7 @@ exports.config = {
           handlebars: {
             enableProcessor: true
           },
-          defaultContext: { brand, env, theme, localStyle }
+          defaultContext: { brand, env, theme, localStyle, revision }
         })
       ]
     }
