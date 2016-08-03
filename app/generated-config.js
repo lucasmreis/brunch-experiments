@@ -1,0 +1,1 @@
+export default {"aaa":12345,"bbb":{"ccc":"acom base","ddd":"acom dev"}}
