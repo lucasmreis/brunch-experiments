@@ -3,11 +3,12 @@ let deepAssign = require('deep-assign')
 let fileSize = require('filesize')
 let gzipSize = require('gzip-size')
 
-const brand = process.env.BRAND || 'acom'
-const env = process.env.ENV || 'development'
+const brand        = process.env.BRAND         || 'acom'
+const env          = process.env.ENV           || 'development'
+const themeVersion = process.env.THEME_VERSION || '2.1.38'
 
-console.log('BRAND:', process.env.BRAND)
-console.log('ENV:', process.env.ENV)
+const theme        = `https://cdn.b2w/theme.${brand}.${themeVersion}.css`
+const localStyle   = `app.${brand}.css`
 
 exports.config = {
   hot: true,
@@ -25,7 +26,7 @@ exports.config = {
           handlebars: {
             enableProcessor: true
           },
-          defaultContext: { brand, env }
+          defaultContext: { brand, env, theme, localStyle }
         })
       ]
     }
