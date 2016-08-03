@@ -18,14 +18,24 @@ exports.config = {
   },
 
   plugins: {
-    babel: { presets: ['es2015', 'react'] }
+    babel: { presets: ['es2015', 'react'] },
+    static: {
+      processors: [
+        require('html-brunch-static')({
+          handlebars: {
+            enableProcessor: true
+          },
+          defaultContext: { brand, env }
+        })
+      ]
+    }
   },
 
   hooks: {
     preCompile: (end) => {
-      const baseConfig = require('./app/config/base.json')
-      const brandConfig = require('./app/config/' + brand + '.base.json')
-      const brandEnvConfig = require('./app/config/' + brand + '.' + env + '.json')
+      const baseConfig = require('./config/base.json')
+      const brandConfig = require('./config/' + brand + '.base.json')
+      const brandEnvConfig = require('./config/' + brand + '.' + env + '.json')
       fs.writeFile('app/generated-config.js', 'export default ' + JSON.stringify(deepAssign({}, baseConfig, brandConfig, brandEnvConfig)), (err) => {
         if (err) throw err;
         console.log('Config generated.');
