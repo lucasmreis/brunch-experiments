@@ -9,7 +9,17 @@ module.exports = function(env, brand, endFunction) {
 
   const finalConfig = deepAssign({}, baseConfig, brandConfig, brandEnvConfig);
 
-  const configFileContents = 'export default ' + JSON.stringify(finalConfig);
+  const configFileContents =`
+// DON'T CHANGE THIS FILE!
+
+// It's generated on build. To change application config, change the files
+// on ./config directory, and run the build again.
+
+// ENV: ${env}
+
+// BRAND: ${brand}
+
+export default ${JSON.stringify(finalConfig)};`;
 
   fs.writeFile('app/generated-config.js', configFileContents, (err) => {
     if (err) throw err;
