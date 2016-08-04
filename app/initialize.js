@@ -6,8 +6,6 @@ import counterApp from './reducers';
 import App from 'components/App';
 import config from './generated-config';
 
-console.log(config);
-
 const store = createStore(counterApp, module.hot && module.hot.data && module.hot.data.counter || 0);
 
 if (module.hot) {

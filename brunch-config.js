@@ -1,7 +1,13 @@
 let fs = require('fs')
-let deepAssign = require('deep-assign')
 let fileSize = require('filesize')
 let gzipSize = require('gzip-size')
+let chalk = require('chalk')
+
+let configGenerator = require('./config/config-generator')
+
+//
+// ENVIRONMENT AND GENERATED CONSTANTS
+//
 
 const brand        = process.env.BRAND         || 'acom'
 const env          = process.env.ENV           || 'development'
@@ -11,6 +17,7 @@ const theme      = `https://cdn.b2w/theme.${brand}.${themeVersion}.css`
 const localStyle = `app.${brand}.css`
 
 const revision = 'some-revision-0.13.5'
+
 
 exports.config = {
   hot: true,
@@ -36,23 +43,19 @@ exports.config = {
 
   hooks: {
     preCompile: (end) => {
-      const baseConfig = require('./config/base.json')
-      const brandConfig = require('./config/' + brand + '.base.json')
-      const brandEnvConfig = require('./config/' + brand + '.' + env + '.json')
-      fs.writeFile('app/generated-config.js', 'export default ' + JSON.stringify(deepAssign({}, baseConfig, brandConfig, brandEnvConfig)), (err) => {
-        if (err) throw err;
-        console.log('Config generated.');
-        end();
-      });
+      configGenerator(env, brand, end);
     },
-    onCompile: (generatedFiles, changedAssets) => {
-      generatedFiles.forEach(logGzipSize)
-      changedAssets.forEach(logGzipSize)
+    onCompile: () => {
+      const publicFolder = 'public/';
+      const publicFiles = fs.readdirSync(publicFolder);
+      console.log(chalk.gray('\nFinal gzipped file sizes:\n'));
+      publicFiles.forEach(file => logGzipSize(publicFolder + file));
+      console.log(chalk.gray('\n----------\n'));
     }
   }
 };
 
-function logGzipSize({ path }) {
+function logGzipSize(path) {
   const fileContents = fs.readFileSync(path);
-  console.log('Size (gzipped) of ' + path + ': ' + fileSize(gzipSize.sync(fileContents)));
+  console.log('> ' + chalk.cyan(path) + ': ' + fileSize(gzipSize.sync(fileContents)));
 }
