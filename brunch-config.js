@@ -28,7 +28,7 @@ exports.config = {
   },
 
   plugins: {
-    babel: { presets: ['es2015', 'react'] },
+    babel: { presets: ['es2015', 'stage-2', 'react'] },
     static: {
       processors: [
         require('html-brunch-static')({
@@ -46,6 +46,7 @@ exports.config = {
       configGenerator(env, brand, end);
     },
     onCompile: () => {
+      // logs final gzipped file sizes
       const publicFolder = 'public/';
       const publicFiles = fs.readdirSync(publicFolder);
       console.log(chalk.gray('\nFinal gzipped file sizes:\n'));

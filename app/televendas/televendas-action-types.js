@@ -1,0 +1,1 @@
+export const NEW_SESSION_STARTED = 'televendas/NEW_SESSION_STARTED'
