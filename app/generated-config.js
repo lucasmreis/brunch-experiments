@@ -4,8 +4,8 @@
 // This is generated on build. To change application config, change the files
 // on ./config directory, and run the build again.
 
-// ENV: development
+// ENV: staging
 
-// BRAND: acom
+// BRAND: shop
 
-export default {"env":"development","brand":"acom","aaa":12345,"bbb":{"ccc":"acom base","ddd":"acom dev"}};
+export default {"env":"staging","brand":"shop","aaa":12345,"bbb":{"ccc":"shop base","ddd":"shop staging"}};

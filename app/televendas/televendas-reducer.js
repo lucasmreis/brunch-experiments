@@ -1,4 +1,4 @@
-import { NEW_SESSION_STARTED } from './televendas-action-types'
+const NEW_SESSION_STARTED = 'televendas/NEW_SESSION_STARTED'
 
 const initialState = { session: 'old session' }
 

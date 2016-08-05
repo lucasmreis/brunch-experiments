@@ -1,16 +1,19 @@
 import ReactDOM from 'react-dom'
 import React from 'react'
+import axios from 'axios'
 import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
+import createLogger from 'redux-logger'
+import thunk from 'redux-thunk'
 
 import config from './generated-config'
 
 import reducer from './reducers'
 import Root from './root'
 
-const middlewares = config.env === 'production' || config.env === 'staging'
-  ? []
-  : []
+const middlewares = config.env === 'development'
+  ? [ thunk.withExtraArgument(axios), createLogger() ]
+  : [ thunk.withExtraArgument(axios) ]
 
 const store = createStore(
   reducer,
