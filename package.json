@@ -10,7 +10,8 @@
   "scripts": {
     "start": "rm -rf public/ && brunch watch --server",
     "prod": "rm -rf public/ && brunch build --production",
-    "gen:config": "node ./config/config-generator.js"
+    "test": "mocha --compilers js:babel-core/register ./app/**/*-spec.js",
+    "test:watch": "mocha --watch --compilers js:babel-core/register ./app/**/*-spec.js"
   },
   "dependencies": {
     "axios": "^0.13.1",
@@ -25,6 +26,7 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "assert": "^1.4.1",
     "auto-reload-brunch": "^2.7.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
     "babel-preset-es2015": "~6.3.13",
@@ -41,6 +43,7 @@
     "hmr-brunch": "^0.1.0",
     "html-brunch-static": "^1.3.1",
     "javascript-brunch": "^2.0.0",
+    "mocha": "^3.0.1",
     "replace": "^0.3.0",
     "sass-brunch": "^2.6.3",
     "uglify-js-brunch": "^2.0.0"

@@ -16,7 +16,7 @@ export function startNewSession() {
 export function doSomethingAsync() {
   return function(dispatch, getState, api) {
     dispatch({ type: ASYNC_PROCESS_STARTED })
-    return api({ url: 'http://swapi.co/api/people/1/', method: 'get' })
+    return api({ url: 'http://swapi.co/api/people/2/', method: 'get' })
       .then(
         success => dispatch({ type: ASYNC_PROCESS_FINISHED, data: success }),
         error => dispatch({ type: ASYNC_PROCESS_FAILED, error }))
@@ -36,4 +36,3 @@ export default function televendasReducer(state = initialState, action = {}) {
       return state
   }
 }
-
