@@ -4,7 +4,7 @@ import { configure } from '@kadira/storybook';
 // com nome *-story.js no Storybook.
 // Referência: https://github.com/kadirahq/react-storybook/blob/master/docs/configure_storybook.md
 
-const req = require.context('../app', true, /-story\.js$/)
+const req = require.context('../app', true, /.story\.js$/)
 
 function loadStories() {
   req.keys().forEach(req)
