@@ -11,7 +11,8 @@
     "start": "rm -rf public/ && brunch watch --server",
     "prod": "rm -rf public/ && brunch build --production",
     "test": "mocha --compilers js:babel-core/register ./app/**/*-spec.js",
-    "test:watch": "mocha --watch --compilers js:babel-core/register ./app/**/*-spec.js"
+    "test:watch": "mocha --watch --compilers js:babel-core/register ./app/**/*-spec.js",
+    "storybook": "start-storybook -p 4444 -s public"
   },
   "dependencies": {
     "axios": "^0.13.1",
@@ -26,6 +27,7 @@
     "redux-thunk": "^2.1.0"
   },
   "devDependencies": {
+    "@kadira/storybook": "^2.2.0",
     "assert": "^1.4.1",
     "auto-reload-brunch": "^2.7.0",
     "babel-plugin-syntax-object-rest-spread": "^6.13.0",
@@ -40,6 +42,7 @@
     "clean-css-brunch": "^2.0.0",
     "css-brunch": "^2.0.0",
     "digest-brunch": "^1.5.1",
+    "globule": "^1.0.0",
     "hmr-brunch": "^0.1.0",
     "html-brunch-static": "^1.3.1",
     "javascript-brunch": "^2.0.0",
