@@ -76,3 +76,11 @@ A aplicação é dividida em *features*. Cada feature é um container (no sentid
 
 Caso duas features reutilizem um mesmo componente, este componente deve ser movido para a pasta `commons`, e as duas features devem importá-lo de lá.
 
+### Nomenclatura das Actions
+
+As actions são tratadas como *comandos* ou *eventos*. Comandos são utilizados quando não se sabe o resultado de uma ação, como quando o usuário pede para mudar a quantidade de um produto na basket. Os comandos são todos escritos no *imperativo*, como `CHANGE_QUANTITY` ou `REMOVE_PRODUCT`. Os comandos são as *async actions*, e normalmente envolvem requests para as APIs.
+
+Eventos são as actions mais simples, que representam algo que aconteceu com certeza. Por isso, são escritos no *passado*, como `QUANTITY_CHANGED` ou `SELLER_DETAILS_SHOWED`.
+
+Eventos são as actions padrão do Redux, e o projeto utiliza o padrão de [thunks](https://github.com/gaearon/redux-thunk) para implementar os comandos.
+

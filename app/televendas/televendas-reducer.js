@@ -3,9 +3,9 @@
 //
 
 const NEW_SESSION_STARTED = 'televendas/NEW_SESSION_STARTED'
-const ASYNC_PROCESS_STARTED = 'televendas/ASYNC_PROCESS_STARTED'
-const ASYNC_PROCESS_FAILED = 'televendas/ASYNC_PROCESS_FAILED'
-const ASYNC_PROCESS_FINISHED = 'televendas/ASYNC_PROCESS_FINISHED'
+const CHANGE_QUANTITY = 'televendas/CHANGE_QUANTITY'
+const CHANGE_QUANTITY_FAILED = 'televendas/CHANGE_QUANTITY_FAILED'
+const QUANTITY_CHANGED = 'televendas/QUANTITY_CHANGED'
 
 //
 // ACTION CREATORS
@@ -15,13 +15,13 @@ export function startNewSession() {
   return { type: NEW_SESSION_STARTED }
 }
 
-export function doSomethingAsync() {
+export function changeQuantity() {
   return function(dispatch, getState, api) {
-    dispatch({ type: ASYNC_PROCESS_STARTED })
+    dispatch({ type: CHANGE_QUANTITY })
     return api({ url: 'http://swapi.co/api/people/2/', method: 'get' })
       .then(
-        success => dispatch({ type: ASYNC_PROCESS_FINISHED, data: success }),
-        error => dispatch({ type: ASYNC_PROCESS_FAILED, error }))
+        success => dispatch({ type: QUANTITY_CHANGED, data: success }),
+        error => dispatch({ type: CHANGE_QUANTITY_FAILED, error }))
   }
 }
 
