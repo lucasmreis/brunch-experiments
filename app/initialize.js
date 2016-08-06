@@ -50,4 +50,6 @@ if (document.readyState !== 'complete') {
   load()
 }
 
-console.log('CONFIG', JSON.stringify(config, null, '  '))
+if (config.env === 'development') {
+  console.log('CONFIG', JSON.stringify(config, null, '  '))
+}

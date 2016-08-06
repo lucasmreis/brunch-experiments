@@ -29,7 +29,6 @@ exports.config = {
   },
 
   plugins: {
-    babel: { presets: ['es2015', 'stage-2', 'react'] },
     static: {
       processors: [
         require('html-brunch-static')({
