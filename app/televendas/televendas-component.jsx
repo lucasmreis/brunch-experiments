@@ -1,15 +1,14 @@
 import React from 'react'
 
-const Televendas = ({ startNewSession }) => (
+const Televendas = ({ startNewSession, sessionStatus }) => (
   <div>
-    <p>
-      Televendas Container <a
-        href='#'
-        onClick={e => {
+    <p>Televendas Container</p>
+    <p>Status: {sessionStatus}</p>
+    <p><a href='#' onClick={e => {
           e.preventDefault()
           startNewSession()
-        }}>Novo Atendimento</a>
-    </p>
+        }}>Novo Atendimento</a></p>
+    <hr />
   </div>
 )
 

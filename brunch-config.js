@@ -16,15 +16,16 @@ const themeVersion = process.env.THEME_VERSION || '2.1.38'
 const theme      = `https://cdn.b2w/theme.${brand}.${themeVersion}.css`
 const localStyle = `app.${brand}.css`
 
-const revision = 'some-revision-0.13.5'
+const revision = 'some-revision-0.13.6'
 
+// ---
 
 exports.config = {
   hot: true,
 
   files: {
-    javascripts: { joinTo: 'app.js' },
-    stylesheets: { joinTo: 'app.css' }
+    javascripts: { joinTo: 'basket.js' },
+    stylesheets: { joinTo: 'basket.css' }
   },
 
   plugins: {
