@@ -28,6 +28,14 @@ exports.config = {
     stylesheets: { joinTo: 'basket.css' }
   },
 
+  modules: {
+    autoRequire: { 'basket.js': ['initialize'] }
+  },
+
+  conventions: {
+    ignored: [ /spec\.js$/, /story\.js$/ ]
+  },
+
   plugins: {
     static: {
       processors: [
