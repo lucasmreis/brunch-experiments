@@ -11,6 +11,10 @@ import config from './generated-config'
 import reducer from './reducers'
 import Root from './root'
 
+//
+// REDUX STORE SETUP
+//
+
 const middlewares = config.env === 'development'
   ? [ thunk.withExtraArgument(axios), createLogger() ]
   : [ thunk.withExtraArgument(axios) ]
@@ -22,7 +26,10 @@ const store = createStore(
     applyMiddleware(...middlewares),
     window.devToolsExtension ? window.devToolsExtension() : f => f))
 
-// hot module reloading
+//
+// HOT MODULE RELOADING
+//
+
 if (module.hot) {
   module.hot.accept('./reducers', () => {
     store.replaceReducer(require('./reducers').default)
@@ -34,6 +41,10 @@ if (module.hot) {
     ;[].slice.apply(document.querySelector('#app').children).forEach(function(c) { c.remove() })
   })
 }
+
+//
+// REACT APPLICATION START
+//
 
 const load = () => {
   ReactDOM.render(
