@@ -1,9 +1,11 @@
+//
+// ACTION TYPES
+//
+
 const NEW_SESSION_STARTED = 'televendas/NEW_SESSION_STARTED'
 const ASYNC_PROCESS_STARTED = 'televendas/ASYNC_PROCESS_STARTED'
 const ASYNC_PROCESS_FAILED = 'televendas/ASYNC_PROCESS_FAILED'
 const ASYNC_PROCESS_FINISHED = 'televendas/ASYNC_PROCESS_FINISHED'
-
-const initialState = { session: 'old session' }
 
 //
 // ACTION CREATORS
@@ -26,6 +28,8 @@ export function doSomethingAsync() {
 //
 // REDUCER
 //
+
+const initialState = { session: 'old session' }
 
 export default function televendasReducer(state = initialState, action = {}) {
   switch (action.type) {
