@@ -5,19 +5,19 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
-import analytics from 'redux-analytics'
+import metricsMiddleware from 'metrics'
 
 import config from './generated-config'
 
-import track from './metrics'
+import startup from './startup'
 import reducer from './reducers'
 import Root from './root'
+
+import { startBasket } from './startup'
 
 //
 // REDUX STORE SETUP
 //
-
-const metricsMiddleware = analytics(({ type, payload }, state) => track(type, payload, state))
 
 const middlewares = config.env === 'development'
   ? [ thunk.withExtraArgument(axios), metricsMiddleware, createLogger() ]
@@ -65,6 +65,16 @@ if (document.readyState !== 'complete') {
   load()
 }
 
+//
+// BASKET STARTUP
+//
+
 if (config.env === 'development') {
-  console.log('CONFIG', JSON.stringify(config, null, '  '))
+  console.log(`%c config = ${JSON.stringify(config, null, '  ')}`, 'color: navy; font-weight: bold')
 }
+
+const storage = { cartId: '123' } // parse ...
+const urlQuery = { codItemFusion: '456' } // parse ...
+
+// start!
+store.dispatch(startBasket(storage, urlQuery))
