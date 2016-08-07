@@ -131,3 +131,22 @@ Exemplo de action que salva um cart id nos cookies:
   }
 }
 ```
+
+## Bibliografia
+
+Este post ajuda a entender como funciona um componente React:
+https://facebook.github.io/react/docs/thinking-in-react.html
+
+Existem dois tipos de componentes; a maioria deve ser cuidar da parte estética (o que estamos chamando de *components*), e alguns devem cuidar de como a aplicação se comporta (o que estamos chamando de *containers*):
+https://medium.com/@dan_abramov/smart-and-dumb-components-7ca2f9a7c7d0#.mec2wlw68
+
+A documentação do Redux é fantástica:
+http://redux.js.org/
+
+Os cursos do Egghead também são muito bons, e explicam tudo que é necessário pra entender React + Redux na sua totalidade:
+https://egghead.io/courses/react-fundamentals
+(Recomendo muito assistir ao curso completo do Redux no Egghead. É tudo muito bem explicado, e o cara "monta" o Redux aos pouquinhos nas aulas. Perfeito pra entender de fato o paradigma)
+https://egghead.io/courses/getting-started-with-redux
+https://egghead.io/courses/building-react-applications-with-idiomatic-redux
+
+
