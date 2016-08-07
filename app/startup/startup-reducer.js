@@ -9,7 +9,16 @@ export const BASKET_STARTED = 'startup/BASKET_STARTED'
 //
 
 export function startBasket(cookies, urlQuery) {
-  return { type: BASKET_STARTED }
+  return {
+    type: BASKET_STARTED,
+
+    meta: {
+      storage: {
+        type: 'COOKIE',
+        payload: { key: 'cart.id', value: '12345' }
+      }
+    }
+  }
 }
 
 //

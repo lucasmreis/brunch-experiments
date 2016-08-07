@@ -5,7 +5,8 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
-import metricsMiddleware from 'metrics'
+import metricsMiddleware from './metrics'
+import storageMiddleware from './storage'
 
 import config from './generated-config'
 
@@ -20,8 +21,8 @@ import { startBasket } from './startup'
 //
 
 const middlewares = config.env === 'development'
-  ? [ thunk.withExtraArgument(axios), metricsMiddleware, createLogger() ]
-  : [ thunk.withExtraArgument(axios), metricsMiddleware ]
+  ? [ thunk.withExtraArgument(axios), metricsMiddleware, storageMiddleware, createLogger() ]
+  : [ thunk.withExtraArgument(axios), metricsMiddleware, storageMiddleware ]
 
 const store = createStore(
   reducer,

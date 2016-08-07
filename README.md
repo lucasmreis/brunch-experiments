@@ -84,4 +84,50 @@ As actions são tratadas como *comandos* ou *eventos*. Comandos são utilizados 
 
 Eventos são as actions mais simples, que representam algo que aconteceu com certeza. Por isso, são escritos no *passado*, como `QUANTITY_CHANGED` ou `SELLER_DETAILS_SHOWED`.
 
+Vamos tentar utilizar o padrão `type/payload/error/meta` descrito em [Flux Standard Actions](https://github.com/acdlite/flux-standard-action), com uma única diferença: a action de erro *não ter o mesmo type* do comando. Mas é interessante trabalhar com `error: true` para ações de erro.
+
 Eventos são as actions padrão do Redux, e o projeto utiliza o padrão de [thunks](https://github.com/gaearon/redux-thunk) para implementar os comandos.
+
+### Métricas / Analytics
+
+Para enviar uma métrica para as ferramentas de analytics, foi implementado um middleware do Redux, para isso ser feito *declarativamente*, e não necessitar usar thunks o tempo todo.
+
+Para enviar um evento, é só colocar uma propriedade `meta` na action, como o exemplo:
+
+```js
+{
+  type: SOME_ACTION_WITH_METRICS,
+  payload: {
+    some: 'action data'
+  },
+  meta: {
+    analytics: {
+      type: 'some:action',
+      payload: { some: 'metric data' }
+    }
+  }
+}
+```
+
+O código para este middleware está na pasta `metrics`.
+
+## Cookies / Storage
+
+Quando for necessário guardar alguma informação nos cookies / local storage, também há um middleware para fazer isso de forma declarativa.
+
+Exemplo de action que salva um cart id nos cookies:
+
+```js
+{
+  type: SOME_ACTION_WITH_STORAGE,
+  payload: {
+    some: 'action data'
+  },
+  meta: {
+    storage: {
+      type: 'COOKIE', // ou LOCAL_STORAGE ; SESSION_STORAGE
+      payload: { key: 'cart.id', value: '123456' } // sempre strings!
+    }
+  }
+}
+```
