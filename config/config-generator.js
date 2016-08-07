@@ -4,8 +4,8 @@ let deepAssign = require('deep-assign')
 module.exports = function(env, brand, endFunction) {
 
   const baseConfig = require('./base.json')
-  const brandConfig = require('./' + brand + '.base.json')
-  const brandEnvConfig = require('./' + brand + '.' + env + '.json')
+  const brandConfig = require('./' + brand + '/base.json')
+  const brandEnvConfig = require('./' + brand + '/' + env + '.json')
 
   const finalConfig = deepAssign({ env, brand }, baseConfig, brandConfig, brandEnvConfig);
 
