@@ -5,9 +5,11 @@ import { Provider } from 'react-redux'
 import { createStore, applyMiddleware, compose } from 'redux'
 import createLogger from 'redux-logger'
 import thunk from 'redux-thunk'
+import analytics from 'redux-analytics'
 
 import config from './generated-config'
 
+import track from './metrics'
 import reducer from './reducers'
 import Root from './root'
 
@@ -15,9 +17,11 @@ import Root from './root'
 // REDUX STORE SETUP
 //
 
+const metricsMiddleware = analytics(({ type, payload }, state) => track(type, payload, state))
+
 const middlewares = config.env === 'development'
-  ? [ thunk.withExtraArgument(axios), createLogger() ]
-  : [ thunk.withExtraArgument(axios) ]
+  ? [ thunk.withExtraArgument(axios), metricsMiddleware, createLogger() ]
+  : [ thunk.withExtraArgument(axios), metricsMiddleware ]
 
 const store = createStore(
   reducer,

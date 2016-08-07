@@ -83,4 +83,3 @@ As actions são tratadas como *comandos* ou *eventos*. Comandos são utilizados 
 Eventos são as actions mais simples, que representam algo que aconteceu com certeza. Por isso, são escritos no *passado*, como `QUANTITY_CHANGED` ou `SELLER_DETAILS_SHOWED`.
 
 Eventos são as actions padrão do Redux, e o projeto utiliza o padrão de [thunks](https://github.com/gaearon/redux-thunk) para implementar os comandos.
-

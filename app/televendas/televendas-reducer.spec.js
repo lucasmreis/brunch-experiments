@@ -21,7 +21,7 @@ describe('televendas', function() {
 
     const expected = [
       { type: CHANGE_QUANTITY },
-      { type: QUANTITY_CHANGED, data: { status: 200 } }
+      { type: QUANTITY_CHANGED, payload: { status: 200 } }
     ]
 
     store.dispatch(changeQuantity())

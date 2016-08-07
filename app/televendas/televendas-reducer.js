@@ -12,7 +12,15 @@ export const QUANTITY_CHANGED = 'televendas/QUANTITY_CHANGED'
 //
 
 export function startNewSession() {
-  return { type: NEW_SESSION_STARTED }
+  return {
+    type: NEW_SESSION_STARTED,
+
+    // DESCOMENTAR APENAS NA HORA DE EXPLICAR O ANALYTICS
+
+    // meta: {
+    //   analytics: { type: 'metric:type', payload: { some: 'info' } }
+    // }
+  }
 }
 
 export function changeQuantity() {
@@ -20,8 +28,8 @@ export function changeQuantity() {
     dispatch({ type: CHANGE_QUANTITY })
     return api({ url: 'http://swapi.co/api/people/2/', method: 'get' })
       .then(
-        success => dispatch({ type: QUANTITY_CHANGED, data: success }),
-        error => dispatch({ type: CHANGE_QUANTITY_FAILED, error }))
+        success => dispatch({ type: QUANTITY_CHANGED, payload: success }),
+        error => dispatch({ type: CHANGE_QUANTITY, error: true }))
   }
 }
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
 
-import { doSomethingAsync } from './televendas-reducer'
+import { startNewSession } from './televendas-reducer'
 import Televendas from './televendas-component'
 
 const mapStateToProps = state => ({
@@ -8,7 +8,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = dispatch => ({
-  startNewSession: () => dispatch(doSomethingAsync())
+  startNewSession: () => dispatch(startNewSession())
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(Televendas)
