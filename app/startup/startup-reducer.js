@@ -12,12 +12,14 @@ export function startBasket(cookies, urlQuery) {
   return {
     type: BASKET_STARTED,
 
-    meta: {
-      storage: {
-        type: 'COOKIE',
-        payload: { key: 'cart.id', value: '12345' }
-      }
-    }
+    //  só descomentar quando explicar storage!
+
+    // meta: {
+    //   storage: {
+    //     type: 'COOKIE',
+    //     payload: { key: 'cart.id', value: '12345' }
+    //   }
+    // }
   }
 }
 
