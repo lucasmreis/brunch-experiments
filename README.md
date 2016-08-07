@@ -72,6 +72,8 @@ Os arquivos SASS estão na pasta `styles`, e qualquer asset adicional (como imag
 
 A aplicação é dividida em *features*. Cada feature é um container (no sentido definido pelo Redux). Cada feature possui um diretório próprio, como `basket`, `summary` e `televendas`. Cada diretório possui um arquivo `index.js`, que é a interface da feature para o "mundo".
 
+O Startup é uma feature especial: ela toma conta da lógica de montar um Cart com as informações recebidas pelos cookies, storage e url.
+
 **ATENÇÃO:** É importante que nenhuma parte da aplicação acesse diretamente nenhum módulo de uma feature! Todos os imports devem referenciar o `index.js` da feature, como boa prática para manter a organização do projeto.
 
 Caso duas features reutilizem um mesmo componente, este componente deve ser movido para a pasta `commons`, e as duas features devem importá-lo de lá.
