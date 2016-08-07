@@ -16,6 +16,7 @@
   },
   "dependencies": {
     "axios": "^0.13.1",
+    "classnames": "^2.2.5",
     "deep-assign": "^2.0.0",
     "filesize": "^3.3.0",
     "gzip-size": "^3.0.0",

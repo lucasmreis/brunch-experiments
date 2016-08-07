@@ -1,7 +1,8 @@
 import React from 'react'
+import classNames from 'classnames'
 
 const Televendas = ({ startNewSession, sessionStatus }) => (
-  <div>
+  <div className={classNames('main')}>
     <p>Televendas Container</p>
     <p>Status: {sessionStatus}</p>
     <p><a href='#' onClick={e => {

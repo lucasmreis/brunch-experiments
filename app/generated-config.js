@@ -6,6 +6,6 @@
 
 // ENV: development
 
-// BRAND: acom
+// BRAND: shop
 
-export default {"env":"development","brand":"acom","aaa":12345,"bbb":{"ccc":"acom base","ddd":"acom dev"}};
+export default {"env":"development","brand":"shop","aaa":12345,"bbb":{"ccc":"shop base","ddd":"shop dev"}};
